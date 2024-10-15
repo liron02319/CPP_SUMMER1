@@ -34,7 +34,7 @@ Function : isConnected
  This function check if the graph is connected
 */
 
-    static bool isConnected(Graph graph);
+    static bool isConnected(const Graph graph);
 
 
 
@@ -42,7 +42,7 @@ Function : isConnected
 Function : shortestPath
 this function return the shortestpath from start vertex to other vertex
 */
-    static std::string shortestPath(Graph graph, size_t startVetrex, size_t endVertex);
+    static std::string shortestPath(const Graph graph, size_t startVetrex, size_t endVertex);
 
 
 
@@ -50,14 +50,14 @@ this function return the shortestpath from start vertex to other vertex
 Function : isContainsCycle
 that function return and check if the graph contain cycle 
 */
-    static std::string isContainsCycle(Graph graph);
+    static std::string isContainsCycle(const Graph graph);
 
 
 /*
 Function : isBipartite
  isBipartite(g) - The algorithm accepts a graph and returns the partition of the graph into a bipartite graph. If the graph cannot be partitioned, 
  the algorithm will return 0.*/
-    static std::string isBipartite(Graph graph);
+    static std::string isBipartite(const Graph graph);
 
 
 /*
@@ -67,7 +67,7 @@ the algorithm accepts a graph and finds a negative cycle
  If no such circle exists, the algorithm will print that there is no negative circle.
 
 */
-    static std::string negativeCycle(Graph graph);
+    static std::string negativeCycle(const Graph graph);
 
 /*
 Function : DFSvisit
@@ -80,6 +80,10 @@ help functuion for the other functions
 */
 
     static bool DFSvisitColors(Graph graph, size_t u, std::vector<int>& colors);
+
+
+
+
 
 };
 

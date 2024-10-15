@@ -1,6 +1,8 @@
 /*
 312324247 - Liron Cohen - liron02319@gmail.com
 */
+
+
 #include "doctest.h"
 #include "Algorithms.hpp"
 
@@ -150,7 +152,7 @@ TEST_CASE("Test isContainsCycle")
         {1, 0, 1},
         {0, 1, 0}};
     g.loadGraph(graph);
-    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0-->1-->0");
+    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0->1->0");
 
 
 
@@ -161,7 +163,7 @@ TEST_CASE("Test isContainsCycle")
     {0, 0, 0, 0}, 
     };
     g.loadGraph(gr);
-    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0-->2-->1-->0");
+    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0->2->1->0");
 
     vector<vector<int>> gr2 = {
         {0, 0, 6, 0}, 
@@ -177,7 +179,7 @@ TEST_CASE("Test isContainsCycle")
         {1, 0} 
     };
     g.loadGraph(gr3);
-    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0-->1-->0");
+    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0->1->0");
 
 
 
@@ -188,7 +190,7 @@ TEST_CASE("Test isContainsCycle")
         {0, 0, 1, 0, 0},
         {0, 0, 0, 0, 0}};
     g.loadGraph(graph2);
-    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0-->1-->0");
+    CHECK(ariel::Algorithms::isContainsCycle(g) == "The cycle is:0->1->0");
 }
 
 TEST_CASE("Test isBipartite")
@@ -199,7 +201,7 @@ TEST_CASE("Test isBipartite")
         {1, 0, 1},
         {0, 1, 0}};
     g.loadGraph(graph);
-    CHECK(ariel::Algorithms::isBipartite(g) == "{0 2 } {1 }");
+    CHECK(ariel::Algorithms::isBipartite(g) == "{0 2 }{1 }");
 
     vector<vector<int>> graph2 = {
         {0, 1, 1, 0, 0},
@@ -230,7 +232,7 @@ TEST_CASE("Test isBipartite")
     };
 
     g.loadGraph(graph4);
-    CHECK(ariel::Algorithms::isBipartite(g) == "{0 4 5 } {1 2 3 }");
+    CHECK(ariel::Algorithms::isBipartite(g) == "{0 4 5 }{1 2 3 }");
 
 
 }
@@ -290,6 +292,7 @@ TEST_CASE("Plus")
     SUBCASE("graph++")
     {
          ariel::Graph g1;
+          ariel::Graph g1test;
         vector<vector<int>> adjmat1 = {
             {0, 1, 2, 0, 0},
             {1, 0, 6, 0, 0},
@@ -297,8 +300,16 @@ TEST_CASE("Plus")
             {0, 0, 9, 0, 0},
             {0, 0, 0, 0, 0}};
         g1.loadGraph(adjmat1);
-        g1++;
+      //  g1++;
+        g1test=g1++;
         CHECK(g1.getAdjacencyMatrix() == vector<vector<int>>{{0, 2, 3, 0, 0}, {2, 0, 7, 0, 0}, {3, 7, 0, 10, 0}, {0, 0, 10, 0, 0}, {0, 0, 0, 0, 0}});
+        CHECK(g1test.getAdjacencyMatrix() == vector<vector<int>>{{0, 1, 2, 0, 0},
+            {1, 0, 6, 0, 0},
+            {2, 6, 0, 9, 0},
+            {0, 0, 9, 0, 0},
+            {0, 0, 0, 0, 0}});
+
+
 
         vector<vector<int>> adjmat2 = {
             {0, 0, 0, 0, 0, 0},
@@ -316,6 +327,8 @@ TEST_CASE("Plus")
     SUBCASE("++graph")
     {
           ariel::Graph g1;
+                    ariel::Graph g2test;
+
         vector<vector<int>> adjmat1 = {
             {0, 1, 2, 0, 0},
             {1, 0, 6, 0, 0},
@@ -324,8 +337,11 @@ TEST_CASE("Plus")
             {0, 0, 0, 0, 0}};
         g1.loadGraph(adjmat1);
 
-        ++g1;
+       // ++g1;
+               g2test=++g1;
+
         CHECK(g1.getAdjacencyMatrix() == vector<vector<int>>{{0, 2, 3, 0, 0}, {2, 0, 7, 0, 0}, {3, 7, 0, 10, 0}, {0, 0, 10, 0, 0}, {0, 0, 0, 0, 0}});
+        CHECK(g2test.getAdjacencyMatrix() == vector<vector<int>>{{0, 2, 3, 0, 0}, {2, 0, 7, 0, 0}, {3, 7, 0, 10, 0}, {0, 0, 10, 0, 0}, {0, 0, 0, 0, 0}});
 
         vector<vector<int>> adjmat2 = {
             {0, 0, 0, 0, 0, 0},
@@ -550,6 +566,9 @@ TEST_CASE("Multiplication")
         g3 = g1 * g2;
 
         CHECK(g3.getAdjacencyMatrix() == vector<vector<int>>{{5, -12, 6, 20, 0}, {12, -33, 8, 54, 3}, {15, 6, 133, 12, 24}, {18, -54, 0, 81, 0}, {6, 24, 24, 42, 0}});
+
+     
+    
     }
 
     SUBCASE("graph1 *= graph2")

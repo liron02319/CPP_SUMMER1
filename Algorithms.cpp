@@ -5,6 +5,7 @@
 #include <algorithm> 
 #include "Algorithms.hpp"
 #include <string>
+#include <functional>
 
 using namespace std;
 using namespace ariel;
@@ -105,7 +106,7 @@ string Algorithms::shortestPath(Graph graph, size_t start, size_t end)
     }
 
     if (d[end] == INT32_MIN) {
-        return "There a negative cycle"; // If there is a negative cycle
+        return "There is a negative cycle"; // If there is a negative cycle
     }
 
     if (pi[end] == -1) {
@@ -132,7 +133,7 @@ string Algorithms::shortestPath(Graph graph, size_t start, size_t end)
 Function : isContainsCycle
 that function return and check if the graph contain cycle 
 */
-string Algorithms::isContainsCycle(Graph graph)
+string Algorithms::isContainsCycle(const Graph graph)
 {
     string str = "No cycles"; // no cycles found.
     
@@ -158,11 +159,11 @@ string Algorithms::isContainsCycle(Graph graph)
 
                 while (parent != s)
                 {
-                    str = std::to_string(parent) + "-->" + str; 
+                    str = std::to_string(parent) + "->" + str; 
                     parent = parents[parent]; 
                 }
 
-                str = std::to_string(s) + "-->" + str; 
+                str = std::to_string(s) + "->" + str; 
                 
               
                 return "The cycle is:" + str;

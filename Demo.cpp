@@ -24,7 +24,7 @@ int main()
     g.printGraph();                                    // Should print: "Graph with 3 vertices and 4 edges."
     cout << Algorithms::isConnected(g) << endl;        // Should print: "1" (true).
     cout << Algorithms::shortestPath(g, 0, 2) << endl; // Should print: 0->1->2.
-    cout << Algorithms::isContainsCycle(g) << endl;    // Should print: "0" (false).
+    cout << Algorithms::isContainsCycle(g) << endl;    // Should print: "the cycle is:0->1->0
     cout << Algorithms::isBipartite(g) << endl;        // Should print: "The graph is bipartite: A={0, 2}, B={1}."
 
     // 5x5 matrix that represents a non-connected graph with a cycle.
@@ -40,8 +40,8 @@ int main()
     g.printGraph();                                    // Should print: "Graph with 5 vertices and 8 edges."
     cout << Algorithms::isConnected(g) << endl;        // Should print: "0" (false).
     cout << Algorithms::shortestPath(g, 0, 4) << endl; // Should print: "-1" (there is no path between 0 and 4).
-    cout << Algorithms::isContainsCycle(g) << endl;    // Should print: "The cycle is: 0->1->2->0".
-    cout << Algorithms::isBipartite(g) << endl;        // Should print: "0" (false).
+    cout << Algorithms::isContainsCycle(g) << endl;    // Should print: "The cycle is: 0->1->0".
+    cout << Algorithms::isBipartite(g) << endl;        // Should print: "0
 
 
     // 5x4 matrix that reprsents invalid graph.
@@ -109,4 +109,26 @@ int main()
     {
         cout << e.what() << endl; // Should print "The number of columns in the first matrix must be equal to the number of rows in the second matrix."
     }
+
+    ariel::Graph g333;
+       vector<vector<int>> adjmat2222 = {
+            {0, 1, 0},
+            {1, 0, 1},
+            {0, 1, 0}};
+       // g333.loadGraph(adjmat2222);
+        //    g333.printGraph();
+
+        ariel::Graph g444;
+
+        vector<vector<int>> adjmat233 = {
+            {0, 2, 0},
+            {2, 0, 2},
+            {0, 2, 0}};
+      //  g444.loadGraph(adjmat233);
+          //  g444.printGraph();
+
+              ariel::Graph g555;
+       //  g555= g333 * g444;
+          //  g555.printGraph();
+    
 }
